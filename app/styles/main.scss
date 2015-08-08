@@ -4,7 +4,12 @@ $brand-color: #6bbdee;
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500);
+
+@font-face {
+    font-family: Bariol-Regular;
+    src: url(../fonts/Bariol_Regular/Bariol_Regular.otf);
+}
 
 .browserupgrade {
   margin: 0.2em 0;
@@ -15,8 +20,32 @@ $brand-color: #6bbdee;
 
 /* Space out content a bit */
 body {
-  background-color: $brand-color;
+  border-top: 7px solid #f4d300;
+  background-color: #fff;
   font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.project-name {
+  font-family: 'Bariol-Regular', sans-serif;
+  font-size: 60px;
+  text-align: center;
+  margin: 30px;
+  color: #ed6529;
+}
+
+.description {
+  height: 350px;
+  background-color: #f1f1f1;
+  margin: 40px 0;
+
+  p {
+    font-size: 20px;
+    width: 50%;
+    display: block;
+    margin: auto;
+    font-weight: 500;
+  }
 }
 
 nav {
