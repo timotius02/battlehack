@@ -9,11 +9,23 @@ braintree.Configuration.configure(
     'e67ed6187177d8aa39a35d5e55dd4eb6'
 )
 
-
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template('home.html')
+
+
+@app.route('/store.html')
+@app.route('/store')
+def store():
+    return render_template('store.html')
+
+
+@app.route('/kitchen.html')
+@app.route('/kitchen')
+def kitchen():
+    return render_template('kitchen.html')
+
 
 @app.route('/payments')
 def payments():
