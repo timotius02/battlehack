@@ -39,7 +39,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/timotius02/hackathon/battlehack/flask"
+VIRTUAL_ENV="/home/sshrandy/Projects/foodstuffs/battlehack/flask"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

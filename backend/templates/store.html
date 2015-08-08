@@ -11,9 +11,9 @@
 
     
 
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css' ) }}">
     
-    <script src="scripts/vendor/modernizr.js"></script>
+    <script src="{{ url_for('static', filename='scripts/vendor/modernizr.js' ) }}"></script>
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -74,10 +74,10 @@
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
 
-    <script src="scripts/vendor.js"></script>
+    <script src="{{ url_for('static', filename='scripts/vendor.js') }}"></script>
     
-    <script src="scripts/plugins.js"></script>
+    <script src="{{ url_for('static', filename='scripts/plugins.js') }}"></script>
     
-    <script src="scripts/main.js"></script>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
   </body>
 </html>

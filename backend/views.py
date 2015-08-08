@@ -9,10 +9,15 @@ braintree.Configuration.configure(
     'e67ed6187177d8aa39a35d5e55dd4eb6'
 )
 
+
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html',
+    return render_template('home.html')
+
+@app.route('/payments')
+def payments():
+    return render_template('payments.html',
                            clientToken=braintree.ClientToken.generate() )
 
 
