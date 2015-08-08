@@ -1,0 +1,118 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FoodStuffs</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    
+
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <script src="scripts/vendor/modernizr.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+
+    <header>
+      <img src="images/foodstuffs.png" alt="FoodStuffs">
+    </header>
+    <div class="description">
+      <button class="green-button login" data-toggle="modal" data-target="#loginModal">Log in</button>
+      <div class="inner">
+        <p>We are here to serve as the middle man to save the 133 billion pounds of food thrown out each year to a better cause</p>
+      </div>
+      <div class="row">
+
+        <div class="col-md-3 col-md-offset-2 desc-fact">
+          <img class="desc-icon" src="images/house.png" alt="House">
+          <h4>Grocery Stores</h4>
+          <p>Need to get rid of food near expiration date, 10% tossed out yearly</p>
+        </div>
+        <div class="col-md-3 col-md-offset-2 desc-fact">
+          <img class="desc-icon" src="images/pie.png" alt="Pie">
+            <h4>Food Banks</h4>
+            <p>Searching for more places to donate food</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="signup">
+      <p>Don't have an account yet?</p>
+      <button class="green-button">Sign Up</button>
+    </div>
+    <div class="timeline">
+      <a class="twitter-timeline" href="https://twitter.com/timsitorus1" data-widget-id="630077500681527296">Tweets by @timsitorus1</a>
+    </div>
+
+    <div class="footer">
+      <p>FoodStuffs Copyright 2015</p>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="row">
+              <div class="col-md-6 modal-form">
+                <img src="images/house-icon.png" alt="Grocery Store">
+                <h3>I'm a grocery store</h3>
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-default green-button modal-button">Log In</button>
+                </form>
+              </div>
+              <div class="col-md-6 modal-form">
+                <img src="images/pie-icon.png" alt="Food Bank">
+                <h3>I'm a food bank</h3>
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-default green-button modal-button">Log In</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <script src="scripts/vendor.js"></script>
+    
+    <script src="scripts/plugins.js"></script>
+    
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
