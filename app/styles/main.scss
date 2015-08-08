@@ -4,7 +4,7 @@ $brand-color: #6bbdee;
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,500);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700);
 
 @font-face {
     font-family: Bariol-Regular;
@@ -26,23 +26,65 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.project-name {
-  font-family: 'Bariol-Regular', sans-serif;
-  font-size: 60px;
-  text-align: center;
-  margin: 30px;
-  color: #ed6529;
+header {
+  img {
+    display: block;
+    margin: auto;
+    width: 400px;
+  }
+    z-index: 0;
+}
+
+.login {
+  position: relative;
+  top: -20px;
+  z-index: 99;
 }
 
 .description {
-  background-color: #f1f1f1;
+  background-color: #f8f8f8;
+  margin: 30px auto;
+  padding-bottom: 10px;
+  width: 80%;
 
-  p {
+  .inner {
+    margin: 20px auto;
+
     font-size: 20px;
     width: 50%;
     display: block;
-    margin: auto;
     font-weight: 500;
+    text-align: center;
+  }
+  .desc-icon {
+    display: block;
+    margin: auto;
+    width: 100px;
+  }
+  .desc-fact {
+    text-align: center;
+    font-weight: 500;
+  }
+}
+
+.green-button {
+    border: none;
+    display: block;
+    margin: auto;
+    background-color: #61d336;
+    padding: 5px 40px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.signup {
+  margin: 50px 0;
+
+  p {
+    font-size: 20px;
+    text-align: center;
   }
 }
 
@@ -89,6 +131,7 @@ nav {
   width: 550px;
   margin: auto;
 }
+
 .inventory {
   padding: 20px;
   margin-top: 40px;
@@ -97,10 +140,49 @@ nav {
 }
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+  height: 60px;
+  margin-top: 20px;
+  color: #fff;
   text-align: center;
+  background-color: #fb611c;
+  font-weight: 500;
+  font-size: 18px;
+  padding-top: 20px;
 }
 
+.close {
+  position: absolute;
+  right: 12px;
+  top: 5px;
+}
 
+#loginModal {
+  h3 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  
+  .modal-content {
+    box-shadow: none;
+    border: none;
+  }
+  .modal-form {
+    border-left: 1px solid #f5f5f5;
+    padding: 20px 50px;
+    img {
+      float: left;
+      position: relative;
+      left: 10px;
+    }
+  }
+
+  .modal-button {
+    margin-top: 25px;
+    width: 100%;
+    &:hover {
+      color: #fff;
+      background-color: lighten(#61d336, 5%);
+    }
+  }
+}
