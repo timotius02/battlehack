@@ -1,0 +1,79 @@
+$icon-font-path: '../fonts/';
+$brand-color: #6bbdee;
+// bower:scss
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* Space out content a bit */
+body {
+  background-color: $brand-color;
+  font-family: 'Roboto', sans-serif;
+}
+
+nav {
+
+  height: 70px;
+  width: 100%;
+
+  ul {
+    list-style-type: none;
+    margin-right: 20px;
+    margin-top: 18px;
+    padding: 0;
+    float: right; 
+
+    li {
+      display: inline-block;
+    }
+
+    a {
+      color: #FFF;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      margin-left: 9px;
+      position: relative;
+      cursor: pointer;
+      line-height: 1em;
+      padding: 8px 10px 9px;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: darken($brand-color, 10%);
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.timeline {
+  display: block;
+  width: 550px;
+  margin: auto;
+}
+.inventory {
+  padding: 20px;
+  margin-top: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+  text-align: center;
+}
+
+
