@@ -1,6 +1,9 @@
 import braintree
-from flask import render_template, flash, redirect, request, Flask
-from backend import app
+from flask import render_template, flash, redirect, request, Flask, session
+from backend import app, db
+from forms import SignupForm
+from models import User
+
 
 braintree.Configuration.configure(
     braintree.Environment.Sandbox,
@@ -12,8 +15,40 @@ braintree.Configuration.configure(
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('home.html')
+    return render_template('index.html')
 
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+  form = SignupForm()
+   
+  if request.method == 'POST':
+    if form.validate() == False:
+      return render_template('signup.html', form=form)
+    else:   
+      newuser = User(form.username.data, form.password.data)
+      db.session.add(newuser)
+      db.session.commit()
+
+      session['username'] = newuser.username
+
+      return redirect(url_for('profile'))
+   
+   
+  elif request.method == 'GET':
+    return render_template('signup.html', form=form)
+
+@app.route('/profile')
+def profile():
+ 
+  if 'username' not in session:
+    return redirect(url_for('signin'))
+ 
+  user = User.query.filter_by(username = session['username']).first()
+ 
+  if user is None:
+    return redirect(url_for('signin'))
+  else:
+    return render_template('profile.html')
 
 @app.route('/store.html')
 @app.route('/store')
