@@ -181,6 +181,12 @@ header {
     background-color: #fff;
   }
 }
+
+.kitchen-tabs {
+  .tab {
+    width: 160px;
+  }
+}
 .store-content {
   border: 3px solid #f8f8f8;
   padding: 20px 40px;
@@ -229,3 +235,38 @@ header {
     margin: 30px 0;
   }
 }
+
+#available-produce {
+  .available-produce-header {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 25px;
+  }
+  .map-header {
+    margin: 15px 0;
+
+    h4 {
+      margin-top: 20px;
+    }
+  }
+}
+
+.map-container {
+  height: 500px;
+  width: 100%;
+}
+
+#map-canvas { height: 100% }
+
+.produce-table {
+  margin: 30px 0;
+
+  thead {
+    font-weight: 400;
+    font-size: 16px;
+  }
+}
+
+
+
+
+
