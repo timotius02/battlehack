@@ -70,27 +70,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>#330921</th>
-              <td>Brocolli Organic</td>
-              <td>3 Heads</td>
-              <td class="expiration-date">08/1/2015</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-              <th>#330921</th>
-              <td>Brocolli Organic</td>
-              <td>3 Heads</td>
-              <td class="expiration-date">08/3/2015</td>
-              <td><input type="checkbox"></td>
-            </tr>
-            <tr>
-              <th>#330921</th>
-              <td>Brocolli Organic</td>
-              <td>3 Heads</td>
-              <td class="expiration-date">08/15/2015</td>
-              <td><input type="checkbox"></td>
-            </tr>
+						{% for good in goods %}
+						<tr>
+							<th>#{{ good.id }}</th>
+							<td>{{ good.name }}</td>
+							<td>{{ good.quantity }}</td>
+							<td class="expiration-date" >{{ good.expiration }}</td>
+							<td><input type="checkbox" ></td>
+						</tr>
+						{% endfor %}
           </tbody>
         </table>
         <div class="row">
