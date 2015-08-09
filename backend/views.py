@@ -97,6 +97,14 @@ def FoodbankLogin():
         return render_template('index.html', GroceryForm=GroceryForm, FoodbankForm=FoodbankForm)
 
 
+@app.route('/signout')
+def signout():
+ 
+  if 'username' not in session:
+    return redirect(url_for('home'))
+     
+  session.pop('username', None)
+  return redirect(url_for('home'))
 
 
 @app.route('/signin', methods=['GET', 'POST'])
