@@ -45,6 +45,7 @@ class Transaction(db.Model):
     status = db.Column(db.String(64))
     foodbankUser_id = db.Column(db.Integer, db.ForeignKey('foodbankuser.id'))
 
+
 class FoodbankUser(db.Model):
     __tablename__ = 'foodbankuser'
     id = db.Column(db.Integer, primary_key=True)

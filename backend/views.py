@@ -3,6 +3,7 @@ from flask import render_template, flash, redirect, request, Flask, session, url
 from backend import app, db
 from forms import *
 from models import *
+from sqlalchemy.orm import sessionmaker
 
 
 braintree.Configuration.configure(
@@ -113,12 +114,18 @@ def addProduct():
 @app.route('/listProduct', methods=['POST'])
 def listProduct():
     if request.method == 'POST':
-        product = Product.query.filter_by(id=request.form["id"])
-        if request.form["submit"] == "sell":
-            product.price=request.form["price"]
+        print request.form["tableoption"] + "bla bla"
+        Session = sessionmaker()
+        product = Product.query.filter_by(id=request.form["tableoption"])
+        if request.form['submit'] == "sell":
+            product.price=request.form['sellingPrice']
+            print product.price
         else:
             product.price=0
         product.sale=True
+        #product.commit()
+        #db.session.query(Product).filter_by(id=request.form["tableoption"]).update({'price': product.price, 'sale': True})
+        #product.update({'price': product.price, 'sale': True})
         db.session.commit()
     return redirect(url_for('store'))
 
@@ -142,7 +149,7 @@ def store():
     if user is None:
         return redirect(url_for('index'))
     else:
-        goods = user.products.all()
+        goods = user.products.filter(Product.sale == False)
         return render_template('store.html',goods=goods)
 
 
