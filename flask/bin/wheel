@@ -1,4 +1,4 @@
-#!/home/sshrandy/Projects/foodstuffs/battlehack/flask/bin/python
+#!/Users/timotius02/hackathon/battlehack/flask/bin/python
 
 # -*- coding: utf-8 -*-
 import re

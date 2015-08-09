@@ -40,6 +40,7 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -88,11 +89,13 @@
             <td>Whole Foods, Union Square</th>
             <td>$100 Produce, 50 Donations</td>
             <td>Available</td>
+            <td><i class="fa fa-chevron-right select-produce"></i></span></td>
           </tr>
           <tr>
             <td>Whole Foods, Union Square</th>
             <td>$100 Produce, 50 Donations</td>
             <td>Available</td>
+            <td><i class="fa fa-chevron-right select-produce"></i></span></td>
           </tr>
         </tbody>
       </table>
@@ -128,6 +131,63 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="container store-content" id="select-grocery-store">
+      <div class="row select-grocery-header">
+        <div class="col-md-1 house-icon">
+          <img src="{{ url_for('static',filename='images/grey-pie.png') }}" alt="Grey Pie Icon">
+        </div>
+        <div class="col-md-6 header-text">
+          <h3>Food Bank Name</h3>
+          <h4>Location</h4>
+        </div>
+      </div>
+      <p class="back-to-map"><i class="fa fa-chevron-left icon"></i>Back To Map</p>
+      <div class="row map-header">
+        <div class="col-md-1"><img src="{{ url_for('static',filename='images/grey-house-icon.png') }}" alt="Grey House Icon"></div>
+        <div class="col-md-9"><h4>Whole Foods, Union Square</h4></div>
+        <div class="col-md-2">
+          <select class="form-control store-filter">
+            <option value"Filter By Category">Filter By Category</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Grains">Grains</option>
+            <option value="Protein">Protein</option>
+            <option value="Dairy">Dairy</option>
+          </select>
+        </div>
+      </div>
+
+      <table class="table produce-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Expiration Date</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Broccoli Organic</th>
+            <td>3 Heads</td>
+            <td>08/15/2015</td>
+            <td>$100</td>
+            <td><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td>Broccoli Organic</th>
+            <td>3 Heads</td>
+            <td>08/15/2015</td>
+            <td>Free</td>
+            <td><input type="checkbox"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col-md-2 col-md-offset-10">
+        <button class="green-button">Buy</button>
+      </div>
     </div>
 
     <div class="footer">

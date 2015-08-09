@@ -83,15 +83,14 @@
         </table>
         <div class="row">
           <div class="col-md-6 col-md-offset-6">
-            <div class="form-group" name="price">
-              <input type="text" class="form-control" name="sellingPrice" id="sellingPrice" placeholder="Selling Price">
-            </div>
-            <button type="submit" class="btn green-button store-content-sell" name="submit" value="sell">Sell</button>
-            OR
-            <button type="submit" class="btn green-button store-content-sell" name="submit" value="donate">Donate!</button>
-						
-						<input type="hidden" name="tableoption" />
-						
+            <form name="send-form" class="send-form form-inline" method="post" id="listProduct" action="listProductFunction">
+              <div class="form-group" name="price">
+                <input type="text" class="form-control" id="sellingPrice" placeholder="Selling Price">
+              </div>
+              <button type="submit" class="btn green-button store-content-sell" value="sell">Sell</button>
+              OR
+              <button type="submit" class="btn green-button store-content-sell" value="donate">Donate!</button>
+            </form>
           </div>
         </div>
     </div>
