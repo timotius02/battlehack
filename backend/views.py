@@ -1,7 +1,7 @@
 import braintree
-from flask import render_template, flash, redirect, request, Flask, session
+from flask import render_template, flash, redirect, request, Flask, session, url_for
 from backend import app, db
-from forms import SignupForm
+from forms import SignupForm, SigninForm
 from models import User
 
 
@@ -33,22 +33,35 @@ def signup():
 
       return redirect(url_for('profile'))
    
-   
   elif request.method == 'GET':
     return render_template('signup.html', form=form)
+
+@app.route('/signin', methods=['GET', 'POST'])
+def signin():
+  form = SigninForm()
+   
+  if request.method == 'POST':
+    if form.validate() == False:
+      return render_template('signin.html', form=form)
+    else:
+      session['username'] = form.username.data
+      return redirect(url_for('profile'))
+                 
+  elif request.method == 'GET':
+    return render_template('signin.html', form=form)
 
 @app.route('/profile')
 def profile():
  
-  if 'username' not in session:
-    return redirect(url_for('signin'))
+    if 'username' not in session:
+        return redirect(url_for('signin'))
  
-  user = User.query.filter_by(username = session['username']).first()
+    user = User.query.filter_by(username = session['username']).first()
  
-  if user is None:
-    return redirect(url_for('signin'))
-  else:
-    return render_template('profile.html')
+    if user is None:
+        return redirect(url_for('signin'))
+    else:
+        return render_template('profile.html')
 
 @app.route('/store.html')
 @app.route('/store')
