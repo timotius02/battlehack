@@ -113,8 +113,11 @@ def addProduct():
 @app.route('/listProduct', methods=['POST'])
 def listProduct():
     if request.method == 'POST':
-        product = Product.query.filter_by(id=request.form["id"].data)
-        product.price=request.form["price"]
+        product = Product.query.filter_by(id=request.form["id"])
+        if request.form["submit"] == "sell":
+            product.price=request.form["price"]
+        else:
+            product.price=0
         product.sale=True
         db.session.commit()
     return redirect(url_for('store'))

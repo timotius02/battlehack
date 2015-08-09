@@ -76,20 +76,20 @@
 							<td>{{ good.name }}</td>
 							<td>{{ good.quantity }}</td>
 							<td class="expiration-date" >{{ good.expiration }}</td>
-							<td><input type="checkbox" ></td>
+							<td form="listProduct" value="{{ good.id }}" id="{{ good.id }}" name="tableoption"><input type="radio" ></td>
 						</tr>
 						{% endfor %}
           </tbody>
         </table>
         <div class="row">
           <div class="col-md-6 col-md-offset-6">
-            <form class="form-inline">
-              <div class="form-group">
-                <input type="email" class="form-control" id="sellingPrice" placeholder="Selling Price">
+            <form name="send-form" class="send-form" method="post" id="listProduct" action="listProductFunction">
+              <div class="form-group" name="price">
+                <input type="text" class="form-control" id="sellingPrice" placeholder="Selling Price">
               </div>
-              <button class="btn green-button store-content-sell">Sell</button>
+              <button type="submit" class="btn green-button store-content-sell" value="sell">Sell</button>
               OR
-              <button class="btn green-button store-content-sell">Donate!</button>
+              <button type="submit" class="btn green-button store-content-sell" value="donate">Donate!</button>
             </form>
 
           </div>
