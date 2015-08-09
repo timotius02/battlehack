@@ -6,18 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FoodStuffs</title>
 
-    <link rel="apple-touch-icon" href="{{ url_for('static',filename='apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
     
 
-    <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}">
+    <link rel="stylesheet" href="styles/main.css">
     
-    <script src="{{ url_for('static',filename='scripts/vendor/modernizr.js') }}"></script>
-
-		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-
+    <script src="scripts/vendor/modernizr.js"></script>
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -26,7 +22,7 @@
     
 
     <header>
-      <img src="{{ url_for('static',filename='images/foodstuffs.png') }}" alt="FoodStuffs">
+      <img src="images/foodstuffs.png" alt="FoodStuffs">
     </header>
     <div class="description">
       <button class="green-button login" data-toggle="modal" data-target="#loginModal">Log in</button>
@@ -36,12 +32,12 @@
       <div class="row">
 
         <div class="col-md-3 col-md-offset-2 desc-fact">
-          <img class="desc-icon" src="{{ url_for('static',filename='images/house.png') }}" alt="House">
+          <img class="desc-icon" src="images/house.png" alt="House">
           <h4>Grocery Stores</h4>
           <p>Need to get rid of food near expiration date, 10% tossed out yearly</p>
         </div>
         <div class="col-md-3 col-md-offset-2 desc-fact">
-          <img class="desc-icon" src="{{ url_for('static',filename='images/pie.png') }}" alt="Pie">
+          <img class="desc-icon" src="images/pie.png" alt="Pie">
             <h4>Food Banks</h4>
             <p>Searching for more places to donate food</p>
         </div>
@@ -50,70 +46,17 @@
 
     <div class="signup">
       <p>Don't have an account yet?</p>
-      <button class="green-button" data-toggle="modal" data-target="#signupModal">Sign Up</button>
+      <button class="green-button">Sign Up</button>
     </div>
     <div class="timeline">
-      <a class="twitter-timeline" href="https://twitter.com/timsitorus1" data-widget-id="630077500681527296">Tweets by @timsitorus1</a>
+      <a class="twitter-timeline" href="https://twitter.com/StuffsMe" data-widget-id="630203342321516544">Tweets by @StuffsMe</a>
     </div>
 
     <div class="footer">
       <p>FoodStuffs Copyright 2015</p>
     </div>
 
-    <!-- Signup Modal -->
-    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="row">
-              <div class="col-md-6 modal-form">
-                <img src="{{ url_for('static',filename='images/house-icon.png') }}" alt="Grocery Store">
-                <h3>I'm a grocery store</h3>
-                <form action="{{ url_for('index') }}" method="post">
-									{{ form.hidden_tag() }}
-									{% for message in form.username.errors %}
-									  <div class="flash">{{ message }}</div>
-									{% endfor %}
-                  <div class="form-group">
-                    <label for="inputUsername">Username</label>
-                    <input type="username" class="form-control" id="GroceryUsernameSignup" name="username" placeholder="Username">
-                  </div>
-									{% for message in form.password.errors %}
-									  <div class="flash">{{ message }}</div>
-									{% endfor %}
-                  <div class="form-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="GroceryPasswordSignup" name="password" placeholder="Password">
-                  </div>
-									<input type='hidden' name='userType' value='grocery' />
-                  <button type="submit" class="btn btn-default green-button modal-button">Sign Up</button>
-                </form>
-              </div>
-              <div class="col-md-6 modal-form">
-                <img src="{{ url_for('static',filename='images/pie-icon.png') }}" alt="Food Bank">
-                <h3>I'm a food bank</h3>
-                <form>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="username" class="form-control" id="FoodbankUsernameSignup" name="username" placeholder="Username">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="FoodbankPasswordSignup" name="password" placeholder="Password">
-                  </div>
-									<input type='hidden' name='userType' value='foodbank' />
-                  <button type="submit" class="btn btn-default green-button modal-button">Sign Up</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Login Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -121,22 +64,22 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <div class="row">
               <div class="col-md-6 modal-form">
-                <img src="{{ url_for('static',filename='images/house-icon.png') }}" alt="Grocery Store">
+                <img src="images/house-icon.png" alt="Grocery Store">
                 <h3>I'm a grocery store</h3>
-                <form action="/signin" method="post">
+                <form>
                   <div class="form-group">
-                    <label for="inputUsername">Username</label>
-                    <input type="username" class="form-control" id="username" name="username" placeholder="username">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
                   </div>
                   <div class="form-group">
-                    <label for="inputSignupPassword">Password</label>
-                    <input type="password" class="form-control" id="inputSignupPassword" name="inputSignupPassword" placeholder="Password">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                   </div>
                   <button type="submit" class="btn btn-default green-button modal-button">Log In</button>
                 </form>
               </div>
               <div class="col-md-6 modal-form">
-                <img src="{{ url_for('static',filename='images/pie-icon.png') }}" alt="Food Bank">
+                <img src="images/pie-icon.png" alt="Food Bank">
                 <h3>I'm a food bank</h3>
                 <form>
                   <div class="form-group">
@@ -155,8 +98,6 @@
         </div>
       </div>
     </div>
-
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -168,26 +109,10 @@
     </script>
 
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    <script src="{{ url_for('static',filename='scripts/vendor.js') }}"></script>
+    <script src="scripts/vendor.js"></script>
     
-    <script src="{{ url_for('static',filename='scripts/plugins.js') }}"></script>
+    <script src="scripts/plugins.js"></script>
     
-    <script src="{{ url_for('static',filename='scripts/main.js') }}"></script>
-
-
-
-		{% if signup_error %}
-		<script type="text/javascript">
-		$('#signupModal').modal('show');
-		</script>
-		{% endif %}
-
-		{% if login_error %}
-		<script type="text/javascript">
-		$('#loginModal').modal('show');
-		</script>
-		{% endif %}
-
-
+    <script src="scripts/main.js"></script>
   </body>
 </html>
