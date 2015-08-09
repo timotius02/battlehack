@@ -4,66 +4,176 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FoodStuffs: Store</title>
+    <title>FoodStuffs</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
     
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css' ) }}">
+    <link rel="stylesheet" href="styles/main.css">
     
-    <script src="{{ url_for('static', filename='scripts/vendor/modernizr.js' ) }}"></script>
+    <script src="scripts/vendor/modernizr.js"></script>
   </head>
   <body>
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="store.html">Store</a></li>
-        <li><a href="kitchen.html">Kitchen</a></li>
-      </ul>
-    </nav>
-    <div class="container-fluid">
-      
-      <div class="inventory">
-        <table class="table table-hover">
+    
+
+    <header class="subpage-header">
+      <a href="/"><img src="images/foodstuffs.png" alt="FoodStuffs"></a>
+      <h3>Log Out</h3>
+    </header>
+    <!-- TABS -->
+    <div class="container">
+      <div class="row tabs">
+        <div class="col-md-6 tab active" id="inventory-tab">Inventory</div>
+        <div class="col-md-6 tab" id="history-tab">History</div>
+      </div>
+    </div>
+
+
+    <div class="container store-content" id="inventory">
+      <div class="row">
+        <div class="col-md-1 house-icon">
+          <img src="images/grey-house-icon.png" alt="Grey House Icon">
+        </div>
+        <div class="col-md-6">
+          <h3>Grocery Store Name</h3>
+          <h4>Location</h4>
+
+          <div class="col-md-4">
+            <select class="form-control store-filter">
+              <option value"Filter By Category">Filter By Category</option>
+              <option value="Fruits">Fruits</option>
+              <option value="Vegetables">Vegetables</option>
+              <option value="Grains">Grains</option>
+              <option value="Protein">Protein</option>
+              <option value="Dairy">Dairy</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md4">
+          <button class="green-button import-inventory">Import Inventory</button>
+        </div>
+      </div>
+      <div class="container"></div>
+        <table class="table">
           <thead>
             <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>Item Number</th>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Expiration Date</th>
+              <th>Select</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <th>#330921</th>
+              <td>Brocolli Organic</td>
+              <td>3 Heads</td>
+              <td class="expiration-date">08/1/2015</td>
+              <td><input type="checkbox"></td>
             </tr>
             <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
+              <th>#330921</th>
+              <td>Brocolli Organic</td>
+              <td>3 Heads</td>
+              <td class="expiration-date">08/3/2015</td>
+              <td><input type="checkbox"></td>
             </tr>
             <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+              <th>#330921</th>
+              <td>Brocolli Organic</td>
+              <td>3 Heads</td>
+              <td class="expiration-date">08/15/2015</td>
+              <td><input type="checkbox"></td>
             </tr>
           </tbody>
         </table>
-      </div>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-6">
+            <form class="form-inline">
+              <div class="form-group">
+                <input type="email" class="form-control" id="sellingPrice" placeholder="Selling Price">
+              </div>
+              <button class="btn green-button store-content-sell">Sell</button>
+              OR
+              <button class="btn green-button store-content-sell">Donate!</button>
+            </form>
 
-
+          </div>
+        </div>
     </div>
-    
+    <div class="container store-content" id="history">
+      <h3>Current List of Sales and Donations</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Food Banks</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>#330921</th>
+            <td>Brocolli Organic</td>
+            <td>3 Heads</td>
+          </tr>
+          <tr>
+            <th>#330921</th>
+            <td>Brocolli Organic</td>
+            <td>3 Heads</td>
+          </tr>
+          <tr>
+            <th>#330921</th>
+            <td>Brocolli Organic</td>
+            <td>3 Heads</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Here is a list of food banks who have benefited from your inventory!</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Food Banks</th>
+            <th>Date</th>
+            <th>Sold / Donate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Soup Kitchen #1</th>
+            <td>08/01/2015</td>
+            <td>$100 Sold</td>
+          </tr>
+          <tr>
+            <th>Soup Kitchen #2</th>
+            <td>08/01/2015</td>
+            <td>Donated</td>
+          </tr>
+          <tr>
+            <th>Soup Kitchen #3</th>
+            <td>08/01/2015</td>
+            <td>$20 Sold</td>
+          </tr>
+          <tr>
+            <th>Soup Kitchen #4</th>
+            <td>08/01/2015</td>
+            <td>Donated</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>  
+
+    <div class="footer">
+      <p>FoodStuffs Copyright 2015</p>
+    </div>
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -74,10 +184,11 @@
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
 
-    <script src="{{ url_for('static', filename='scripts/vendor.js') }}"></script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <script src="scripts/vendor.js"></script>
     
-    <script src="{{ url_for('static', filename='scripts/plugins.js') }}"></script>
+    <script src="scripts/plugins.js"></script>
     
-    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+    <script src="scripts/main.js"></script>
   </body>
 </html>
