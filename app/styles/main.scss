@@ -204,6 +204,11 @@ header {
       width: 75px;
     }
   }
+
+  .header-text {
+    margin-left: 20px;
+  }
+
   .import-inventory {
     background-color: $orange;
     margin-top: 20px;
@@ -264,10 +269,72 @@ header {
     font-weight: 400;
     font-size: 16px;
   }
+
+  .select-produce {
+    cursor: pointer;
+  }
 }
 
 #order-history {
   display: none;
+}
+
+#select-grocery-store {
+  display: none;
+
+  .map-header {
+    margin-top: 30px;
+  }
+  .map-header img {
+    width: 50px;
+  }
+  .header-text {
+    margin-left: 20px;
+  }
+  .back-to-map {
+    margin: 20px 0;
+    cursor: pointer;
+    .icon {
+      margin-right: 10px;
+    }
+  }
+  .select-grocery-header {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 25px;
+  }
+}
+
+.aboutback {
+  background: url('../images/downtown.gif');
+    /* Full Page Background Receipe */
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+  background-attachment: fixed;
+}
+.about {
+  line-height: 1.5;
+  color: white;
+  width: 500px;
+  padding: 34px;
+  background: rgba(0,0,0,0.8);
+  
+  h1 {
+    font-size: 50px;
+    margin-bottom: 5px;
+    color: #eb7138;
+  }
+
+  h4 {
+    font-size: 24px;
+    color: #81c83a;
+    margin-top: 5px
+  }
+
+  a { 
+    color: #81c83a;
+    text-decoration: none;
+  }
 }
 
 
