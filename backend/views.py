@@ -2,7 +2,7 @@ import braintree
 from flask import render_template, flash, redirect, request, Flask, session, url_for
 from backend import app, db
 from forms import SignupForm, SigninForm
-from models import User
+from models import *
 
 
 braintree.Configuration.configure(
@@ -13,42 +13,60 @@ braintree.Configuration.configure(
 )
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    form = SignupForm()
+    if request.method == 'POST':
+        if form.validate(form.userType) == False:
+            return render_template('index.html', form=form, signup_error="bad")
+        else:
+            newuser = ""
+            if form.userType == "grocery":
+                newuser = GroceryUser(form.username.data, form.password.data)
+            else:
+                newuser = FoodbankUser(form.username.data, form.password.data)
+            db.session.add(newuser)
+            db.session.commit()
+
+            session['username'] = newuser.username
+
+            return redirect(url_for('store'))
+   
+    elif request.method == 'GET':
+        return render_template('index.html', form=form)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-  form = SignupForm()
+    form = SignupForm()
    
-  if request.method == 'POST':
-    if form.validate() == False:
-      return render_template('signup.html', form=form)
-    else:   
-      newuser = User(form.username.data, form.password.data)
-      db.session.add(newuser)
-      db.session.commit()
+    if request.method == 'POST':
+        if form.validate() == False:
+            return render_template('signup.html', form=form)
+        else:   
+            newuser = User(form.username.data, form.password.data)
+            db.session.add(newuser)
+            db.session.commit()
 
-      session['username'] = newuser.username
+            session['username'] = newuser.username
 
-      return redirect(url_for('profile'))
+            return redirect(url_for('profile'))
    
-  elif request.method == 'GET':
-    return render_template('signup.html', form=form)
+    elif request.method == 'GET':
+        return render_template('signup.html', form=form)
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
-  form = SigninForm()
+    form = SigninForm()
    
-  if request.method == 'POST':
-    if form.validate() == False:
-      return render_template('signin.html', form=form)
-    else:
-      session['username'] = form.username.data
-      return redirect(url_for('profile'))
+    if request.method == 'POST':
+        if form.validate() == False:
+            return render_template('signin.html', form=form)
+        else:
+            session['username'] = form.username.data
+            return redirect(url_for('profile'))
                  
-  elif request.method == 'GET':
-    return render_template('signin.html', form=form)
+    elif request.method == 'GET':
+        return render_template('signin.html', form=form)
 
 @app.route('/profile')
 def profile():

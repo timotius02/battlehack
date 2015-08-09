@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}">
     
     <script src="{{ url_for('static',filename='scripts/vendor/modernizr.js') }}"></script>
+
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -46,7 +50,7 @@
 
     <div class="signup">
       <p>Don't have an account yet?</p>
-      <button class="green-button">Sign Up</button>
+      <button class="green-button" data-toggle="modal" data-target="#signupModal">Sign Up</button>
     </div>
     <div class="timeline">
       <a class="twitter-timeline" href="https://twitter.com/timsitorus1" data-widget-id="630077500681527296">Tweets by @timsitorus1</a>
@@ -56,7 +60,60 @@
       <p>FoodStuffs Copyright 2015</p>
     </div>
 
-    <!-- Modal -->
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="row">
+              <div class="col-md-6 modal-form">
+                <img src="{{ url_for('static',filename='images/house-icon.png') }}" alt="Grocery Store">
+                <h3>I'm a grocery store</h3>
+                <form action="{{ url_for('index') }}" method="post">
+									{{ form.hidden_tag() }}
+									{% for message in form.username.errors %}
+									  <div class="flash">{{ message }}</div>
+									{% endfor %}
+                  <div class="form-group">
+                    <label for="inputUsername">Username</label>
+                    <input type="username" class="form-control" id="GroceryUsernameSignup" name="username" placeholder="Username">
+                  </div>
+									{% for message in form.password.errors %}
+									  <div class="flash">{{ message }}</div>
+									{% endfor %}
+                  <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" id="GroceryPasswordSignup" name="password" placeholder="Password">
+                  </div>
+									<input type='hidden' name='userType' value='grocery' />
+                  <button type="submit" class="btn btn-default green-button modal-button">Sign Up</button>
+                </form>
+              </div>
+              <div class="col-md-6 modal-form">
+                <img src="{{ url_for('static',filename='images/pie-icon.png') }}" alt="Food Bank">
+                <h3>I'm a food bank</h3>
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="username" class="form-control" id="FoodbankUsernameSignup" name="username" placeholder="Username">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="FoodbankPasswordSignup" name="password" placeholder="Password">
+                  </div>
+									<input type='hidden' name='userType' value='foodbank' />
+                  <button type="submit" class="btn btn-default green-button modal-button">Sign Up</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -66,14 +123,14 @@
               <div class="col-md-6 modal-form">
                 <img src="{{ url_for('static',filename='images/house-icon.png') }}" alt="Grocery Store">
                 <h3>I'm a grocery store</h3>
-                <form>
+                <form action="/signin" method="post">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    <label for="inputUsername">Username</label>
+                    <input type="username" class="form-control" id="username" name="username" placeholder="username">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="inputSignupPassword">Password</label>
+                    <input type="password" class="form-control" id="inputSignupPassword" name="inputSignupPassword" placeholder="Password">
                   </div>
                   <button type="submit" class="btn btn-default green-button modal-button">Log In</button>
                 </form>
@@ -98,6 +155,8 @@
         </div>
       </div>
     </div>
+
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -114,5 +173,21 @@
     <script src="{{ url_for('static',filename='scripts/plugins.js') }}"></script>
     
     <script src="{{ url_for('static',filename='scripts/main.js') }}"></script>
+
+
+
+		{% if signup_error %}
+		<script type="text/javascript">
+		$('#signupModal').modal('show');
+		</script>
+		{% endif %}
+
+		{% if login_error %}
+		<script type="text/javascript">
+		$('#loginModal').modal('show');
+		</script>
+		{% endif %}
+
+
   </body>
 </html>
