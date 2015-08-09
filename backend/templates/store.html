@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FoodStuffs</title>
 
-    <link rel="apple-touch-icon" href="{{ url_for('static',filename='apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
     
 
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}">
     
-    <script src="scripts/vendor/modernizr.js"></script>
+    <script src="{{ url_for('static',filename='scripts/vendor/modernizr.js') }}"></script>
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -22,8 +22,8 @@
     
 
     <header class="subpage-header">
-      <a href="/"><img src="{{ url_for('static',filename='images/foodstuffs.png') }}" alt="FoodStuffs"></a>
-      <h3>Log Out</h3>
+      <a href="/"><img src="images/foodstuffs.png" alt="FoodStuffs"></a>
+      <a href="/logout"><h3>Log Out</h3></a>
     </header>
     <!-- TABS -->
     <div class="container">
@@ -37,7 +37,7 @@
     <div class="container store-content" id="inventory">
       <div class="row">
         <div class="col-md-1 house-icon">
-          <img src="{{ url_for('static',filename='images/grey-house-icon.png') }}" alt="Grey House Icon">
+          <img src="images/grey-house-icon.png" alt="Grey House Icon">
         </div>
         <div class="col-md-6">
           <h3>Grocery Store Name</h3>

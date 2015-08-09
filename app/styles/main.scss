@@ -190,7 +190,7 @@ header {
 .store-content {
   border: 3px solid #f8f8f8;
   padding: 20px 40px;
-
+  min-height: 550px;
   h3 {
     font-weight: 400;
   }
@@ -266,6 +266,9 @@ header {
   }
 }
 
+#order-history {
+  display: none;
+}
 
 
 

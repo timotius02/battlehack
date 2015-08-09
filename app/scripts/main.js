@@ -34,4 +34,26 @@ $(window).ready(function() {
 			$(this).addClass('warning');
 		}
 	});
+
+	var kitchenTabState = 'availableProduce';
+	$('#available-produce-tab').on('click', function() {
+		if (tabState !== 'availableProduce') {
+			$('#order-history-tab').toggleClass('active');
+			$(this).toggleClass('active');
+
+			$('#order-history').toggle(false);
+			$('#available-produce').toggle(true);
+			tabState = 'availableProduce';
+		}
+	});
+	$('#order-history-tab').on('click', function() {
+		if (tabState !== 'orderHistory') {
+			$('#available-produce-tab').toggleClass('active');
+			$(this).toggleClass('active');
+
+			$('#order-history').toggle(true);
+			$('#available-produce').toggle(false);
+			tabState = 'orderHistory';
+		}
+	});
 });
