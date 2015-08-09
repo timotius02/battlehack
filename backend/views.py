@@ -114,18 +114,17 @@ def addProduct():
 @app.route('/listProduct', methods=['POST'])
 def listProduct():
     if request.method == 'POST':
-        print request.form["tableoption"] + "bla bla"
         Session = sessionmaker()
-        product = Product.query.filter_by(id=request.form["tableoption"])
-        if request.form['submit'] == "sell":
-            product.price=request.form['sellingPrice']
+        product = Product.query.filter_by(id=request.json["id"])
+        if request.json['sale'] == "sell":
+            product.price=request.json['price']
             print product.price
         else:
             product.price=0
         product.sale=True
         #product.commit()
         #db.session.query(Product).filter_by(id=request.form["tableoption"]).update({'price': product.price, 'sale': True})
-        #product.update({'price': product.price, 'sale': True})
+        product.update({'price': product.price, 'sale': True})
         db.session.commit()
     return redirect(url_for('store'))
 

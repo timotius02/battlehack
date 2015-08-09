@@ -76,4 +76,27 @@ $(window).ready(function() {
 			kitchenTabState = 'availableProduce';
 		}
 	});
+
+
+		$("#sell").on("click", function (e) {
+				e.preventDefault();
+				var price= $("#sellingPrice").val();
+				var selected= $("input[type='radio'][name='tableoption']:checked").val();
+				var data = {price: price, id: selected, sale: true};
+				$.ajax({
+						type:"POST",
+						url:"/listProduct",
+						data: JSON.stringify(data, null, '\t'),
+						contentType: 'application/json;charset=UTF-8',
+						success: function(result) {
+								console.log(result);
+						}
+				});
+		});
+
+
+
 });
+
+
+
