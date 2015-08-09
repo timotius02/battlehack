@@ -28,7 +28,6 @@ $(window).ready(function() {
 		var date = new Date($(this).text());
 		if ( date > today) {
 			$(this).addClass('danger');
-			console.log('danger');
 		}
 		else if( date > lastWeek) {
 			$(this).addClass('warning');
@@ -37,23 +36,44 @@ $(window).ready(function() {
 
 	var kitchenTabState = 'availableProduce';
 	$('#available-produce-tab').on('click', function() {
-		if (tabState !== 'availableProduce') {
+		if (kitchenTabState !== 'availableProduce') {
 			$('#order-history-tab').toggleClass('active');
 			$(this).toggleClass('active');
 
 			$('#order-history').toggle(false);
 			$('#available-produce').toggle(true);
-			tabState = 'availableProduce';
+			$('#select-grocery-store').toggle(false);
+			kitchenTabState = 'availableProduce';
 		}
 	});
 	$('#order-history-tab').on('click', function() {
-		if (tabState !== 'orderHistory') {
+		if (kitchenTabState !== 'orderHistory') {
 			$('#available-produce-tab').toggleClass('active');
 			$(this).toggleClass('active');
 
 			$('#order-history').toggle(true);
 			$('#available-produce').toggle(false);
-			tabState = 'orderHistory';
+			$('#select-grocery-store').toggle(false);
+			kitchenTabState = 'orderHistory';
+		}
+	});
+
+	$('.select-produce').on('click', function() {
+		if(kitchenTabState !== 'selectGroceryStore') {
+			$('#order-history').toggle(false);
+			$('#available-produce').toggle(false);
+			$('#select-grocery-store').toggle(true);
+
+			kitchenTabState = 'selectGroceryStore';
+		}
+	});
+
+	$('.back-to-map').on('click', function() {
+		if(kitchenTabState === 'selectGroceryStore') {
+			$('#select-grocery-store').toggle(false);
+			$('#available-produce').toggle(true);
+
+			kitchenTabState = 'availableProduce';
 		}
 	});
 });
