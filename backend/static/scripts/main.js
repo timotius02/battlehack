@@ -95,6 +95,43 @@ $(window).ready(function() {
 		});
 
 
+		$("#donate").on("click", function (e) {
+				e.preventDefault();
+				var price= $("#sellingPrice").val();
+				var selected= $("input[type='radio'][name='tableoption']:checked").val();
+				var data = {price: 0, id: selected, sale: true};
+				$.ajax({
+						type:"POST",
+						url:"/listProduct",
+						data: JSON.stringify(data, null, '\t'),
+						contentType: 'application/json;charset=UTF-8',
+						success: function(result) {
+								console.log(result);
+						}
+				});
+		});
+
+
+		$("#purchase").on("click", function (e) {
+				e.preventDefault();
+				var selected= $("input[type='checkbox'][name='purchaseCheck']:checked").val();
+				console.log(selected)
+				var data = {price: selected};
+//				$.ajax({
+//						type:"POST",
+//						url:"/foopayments",
+//						data: JSON.stringify(data, null, '\t'),
+//						contentType: 'application/json;charset=UTF-8',
+//						success: function(result) {
+//								console.log(result);
+				window.location=window.location.origin +'/payments?amount=' + selected;
+//						}
+//				});
+		});
+
+		
+
+
 
 });
 

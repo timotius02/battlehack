@@ -85,6 +85,14 @@
           </tr>
         </thead>
         <tbody>
+					{% for good in goods %}
+					<tr>
+						<td>example1</td>
+						<td>${{ good.price }} {{good.name}}, {{good.quantity}} available</td>
+						<td>Available</td>
+            <td><i class="fa fa-chevron-right select-produce"></i></span></td>
+					</tr>
+					{% endfor %}
           <tr>
             <td>Whole Foods, Union Square</th>
             <td>$100 Produce, 50 Donations</td>
@@ -117,6 +125,14 @@
           </tr>
         </thead>
         <tbody>
+					{% for good in goods %}
+					<tr>
+						<td>example1</td>
+						<td>{{ good.expiration }}</td>
+						<td>${{ good.price }}</td>
+            <td>Delivering</td>
+					</tr>
+					{% endfor %}
           <tr>
             <td>Whole Foods, Union Square</td>
             <td>08/15/2015</td>
@@ -146,7 +162,7 @@
       <p class="back-to-map"><i class="fa fa-chevron-left icon"></i>Back To Map</p>
       <div class="row map-header">
         <div class="col-md-1"><img src="{{ url_for('static',filename='images/grey-house-icon.png') }}" alt="Grey House Icon"></div>
-        <div class="col-md-9"><h4>Whole Foods, Union Square</h4></div>
+        <div class="col-md-9"><h4>example1</h4></div>
         <div class="col-md-2">
           <select class="form-control store-filter">
             <option value"Filter By Category">Filter By Category</option>
@@ -169,6 +185,15 @@
           </tr>
         </thead>
         <tbody>
+					{% for good in goods %}
+					<tr>
+						<td>{{ good.name }}</td>
+						<td>{{ good.quantity }}</td>
+						<td>{{ good.expiration}}</td>
+            <td>${{ good.price }}</td>
+            <td><input value="{{good.price}}" type="checkbox" name="purchaseCheck"></td>
+					</tr>
+					{% endfor %}
           <tr>
             <td>Broccoli Organic</th>
             <td>3 Heads</td>
@@ -186,7 +211,7 @@
         </tbody>
       </table>
       <div class="col-md-2 col-md-offset-10">
-        <button class="green-button">Buy</button>
+        <button class="green-button" id="purchase">Buy</button>
       </div>
     </div>
 

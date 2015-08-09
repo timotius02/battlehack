@@ -4,9 +4,8 @@
 
 <form id="checkout" method="post" action="/checkout">
   <div id="payment-form"></div>
-	<label> Amount </label>
-  <input type="text" name="amount" >
-  <input type="submit" value="Pay">
+	<input style="display:none" name="amount" value="{{amount}}" >
+  <input type="submit" value="Pay {{amount}}">
 </form>
 
 <script src="https://js.braintreegateway.com/v2/braintree.js"></script>

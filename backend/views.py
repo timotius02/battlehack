@@ -155,20 +155,25 @@ def store():
 @app.route('/kitchen.html')
 @app.route('/kitchen')
 def kitchen():
+    goods = Product.query.filter_by(sale = True)
     user = FoodbankUser.query.filter_by(username = session['username']).first()
  
     if user is None:
         return redirect(url_for('index'))
     else:
-        return render_template('kitchen.html')
+        return render_template('kitchen.html', goods=goods)
 
 
+@app.route('/foopayments', methods=["POST"])
+def foopayments():
+    #return redirect(url_for('payments', amount=request.json['price']))
+    return redirect(url_for('payments', 5))
 
-
-@app.route('/payments')
+@app.route('/payments', methods=["GET"])
 def payments():
     return render_template('payments.html',
-                           clientToken=braintree.ClientToken.generate() )
+                           clientToken=braintree.ClientToken.generate(),
+                           amount=request.args.get('amount'))
 
 
 @app.route('/checkout', methods=["POST"])
@@ -182,6 +187,7 @@ def checkout():
     })
 
     if result.is_success:
-        return "<h1>Success! Transaction ID {0}</h1>".format(result.transaction.id)
+        return redirect(url_for('kitchen'))
+        #return "<h1>Success! Transaction ID {0}</h1>".format(result.transaction.id)
     else:
         return "<h1>Error: {0}</h1>".format(result.message)

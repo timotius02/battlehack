@@ -29,7 +29,7 @@ class Product(db.Model):
     quantity = db.Column(db.Integer)
     name = db.Column(db.String(64))
     price = db.Column(db.Float)
-    sale = db.Column(db.Boolean)
+    sale = db.Column(db.Boolean, index=True)
     groceryUser_id = db.Column(db.Integer, db.ForeignKey('groceryuser.id'))
 
     def __repr__(self):
