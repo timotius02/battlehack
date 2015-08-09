@@ -34,7 +34,6 @@ def GrocerySignup():
             db.session.commit()
 
             session['username'] = newuser.username
-
             return redirect(url_for('store'))
    
     elif request.method == 'GET':
@@ -97,53 +96,64 @@ def FoodbankLogin():
         return render_template('index.html', GroceryForm=GroceryForm, FoodbankForm=FoodbankForm)
 
 
+@app.route('/addProduct', methods=['POST'])
+def addProduct():
+    if request.method == 'POST':
+        product = models.Product( item_number=request.form["item_number"],
+                                  expiration=request.form["expiration"],
+                                  quantity=request.form["quantity"],
+                                  name=request.form["name"],
+                                  price=0,
+                                  sale=False,
+                                  grocery=FoodbankUser.query.filter_by(username = session['username']).first())
+        db.session.add(product)
+        db.session.commit()
+    return redirect(url_for('store'))
+
+@app.route('/listProduct', methods=['POST'])
+def listProduct():
+    if request.method == 'POST':
+        product = Product.query.filter_by(id=request.form["id"].data)
+        product.price=request.form["price"]
+        product.sale=True
+        db.session.commit()
+    return redirect(url_for('store'))
+
+
+@app.route('/logout')
 @app.route('/signout')
 def signout():
  
   if 'username' not in session:
-    return redirect(url_for('home'))
+    return redirect(url_for('index'))
      
   session.pop('username', None)
-  return redirect(url_for('home'))
+  return redirect(url_for('index'))
 
-
-@app.route('/signin', methods=['GET', 'POST'])
-def signin():
-    form = SigninForm()
-   
-    if request.method == 'POST':
-        if form.validate() == False:
-            return render_template('signin.html', form=form)
-        else:
-            session['username'] = form.username.data
-            return redirect(url_for('profile'))
-                 
-    elif request.method == 'GET':
-        return render_template('signin.html', form=form)
-
-@app.route('/profile')
-def profile():
- 
-    if 'username' not in session:
-        return redirect(url_for('signin'))
- 
-    user = User.query.filter_by(username = session['username']).first()
- 
-    if user is None:
-        return redirect(url_for('signin'))
-    else:
-        return render_template('profile.html')
 
 @app.route('/store.html')
 @app.route('/store')
 def store():
-    return render_template('store.html')
+    user = GroceryUser.query.filter_by(username = session['username']).first()
+
+    if user is None:
+        return redirect(url_for('index'))
+    else:
+        goods = user.products.all()
+        return render_template('store.html',goods=goods)
 
 
 @app.route('/kitchen.html')
 @app.route('/kitchen')
 def kitchen():
-    return render_template('kitchen.html')
+    user = FoodbankUser.query.filter_by(username = session['username']).first()
+ 
+    if user is None:
+        return redirect(url_for('index'))
+    else:
+        return render_template('kitchen.html')
+
+
 
 
 @app.route('/payments')

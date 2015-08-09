@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FoodStuffs</title>
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="{{ url_for('static',filename='apple-touch-icon.png') }}">
     <!-- Place favicon.ico in the root directory -->
 
     
@@ -47,7 +47,7 @@
     <![endif]-->
 
     <header class="subpage-header">
-      <a href="/"><img src="images/foodstuffs.png" alt="FoodStuffs"></a>
+      <a href="/"><img src="{{ url_for('static',filename='images/foodstuffs.png') }}" alt="FoodStuffs"></a>
       <a href="/logout"><h3>Log Out</h3></a>
     </header>
     <!-- TABS -->
@@ -62,7 +62,7 @@
     <div class="container store-content" id="available-produce">
       <div class="row available-produce-header">
         <div class="col-md-1 house-icon">
-          <img src="images/grey-pie.png" alt="Grey Pie Icon">
+          <img src="{{ url_for('static',filename='images/grey-pie.png') }}" alt="Grey Pie Icon">
         </div>
         <div class="col-md-6">
           <h3>Grocery Store Name</h3>
