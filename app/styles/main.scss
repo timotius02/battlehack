@@ -186,3 +186,35 @@ nav {
     }
   }
 }
+.aboutback {
+  background: url('../images/downtown.gif');
+    /* Full Page Background Receipe */
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+  background-attachment: fixed;
+}
+.about {
+  line-height: 1.5;
+  color: white;
+  width: 500px;
+  padding: 34px;
+  background: rgba(0,0,0,0.8);
+  
+  h1 {
+    font-size: 50px;
+    margin-bottom: 5px;
+    color: #eb7138;
+  }
+
+  h4 {
+    font-size: 24px;
+    color: #81c83a;
+    margin-top: 5px
+  }
+
+  a { 
+    color: #81c83a;
+    text-decoration: none;
+  }
+}
