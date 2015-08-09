@@ -61,7 +61,7 @@
     </div>
 
     <!-- Signup Modal -->
-    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-body">
@@ -70,16 +70,16 @@
               <div class="col-md-6 modal-form">
                 <img src="{{ url_for('static',filename='images/house-icon.png') }}" alt="Grocery Store">
                 <h3>I'm a grocery store</h3>
-                <form action="{{ url_for('index') }}" method="post">
-									{{ form.hidden_tag() }}
-									{% for message in form.username.errors %}
+                <form action="{{ url_for('GrocerySignup') }}" method="post">
+									{{ GroceryForm.hidden_tag() }}
+									{% for message in GroceryForm.username.errors %}
 									  <div class="flash">{{ message }}</div>
 									{% endfor %}
                   <div class="form-group">
                     <label for="inputUsername">Username</label>
                     <input type="username" class="form-control" id="GroceryUsernameSignup" name="username" placeholder="Username">
                   </div>
-									{% for message in form.password.errors %}
+									{% for message in GroceryForm.password.errors %}
 									  <div class="flash">{{ message }}</div>
 									{% endfor %}
                   <div class="form-group">
@@ -93,11 +93,18 @@
               <div class="col-md-6 modal-form">
                 <img src="{{ url_for('static',filename='images/pie-icon.png') }}" alt="Food Bank">
                 <h3>I'm a food bank</h3>
-                <form>
+                <form action="{{ url_for('FoodbankSignup') }}" method="post">
+									{{ FoodbankForm.hidden_tag() }}
+									{% for message in FoodbankForm.username.errors %}
+									  <div class="flash">{{ message }}</div>
+									{% endfor %}
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label for="inputUsername">Username</label>
                     <input type="username" class="form-control" id="FoodbankUsernameSignup" name="username" placeholder="Username">
                   </div>
+									{% for message in FoodbankForm.password.errors %}
+									  <div class="flash">{{ message }}</div>
+									{% endfor %}
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="FoodbankPasswordSignup" name="password" placeholder="Password">
@@ -123,30 +130,46 @@
               <div class="col-md-6 modal-form">
                 <img src="{{ url_for('static',filename='images/house-icon.png') }}" alt="Grocery Store">
                 <h3>I'm a grocery store</h3>
-                <form action="/signin" method="post">
+                <form action="{{ url_for('GroceryLogin') }}" method="post">
+									{{ GroceryForm.hidden_tag() }}
+									{% for message in GroceryForm.username.errors %}
+									  <div class="flash">{{ message }}</div>
+									{% endfor %}
                   <div class="form-group">
                     <label for="inputUsername">Username</label>
-                    <input type="username" class="form-control" id="username" name="username" placeholder="username">
+                    <input type="username" class="form-control" id="GroceryUsernameLogin" name="username" placeholder="Username">
                   </div>
+									{% for message in GroceryForm.password.errors %}
+									  <div class="flash">{{ message }}</div>
+									{% endfor %}
                   <div class="form-group">
-                    <label for="inputSignupPassword">Password</label>
-                    <input type="password" class="form-control" id="inputSignupPassword" name="inputSignupPassword" placeholder="Password">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" id="GroceryPasswordLogin" name="password" placeholder="Password">
                   </div>
+									<input type='hidden' name='userType' value='grocery' />
                   <button type="submit" class="btn btn-default green-button modal-button">Log In</button>
                 </form>
               </div>
               <div class="col-md-6 modal-form">
                 <img src="{{ url_for('static',filename='images/pie-icon.png') }}" alt="Food Bank">
                 <h3>I'm a food bank</h3>
-                <form>
+                <form action="{{ url_for('FoodbankLogin') }}" method="post">
+									{{ FoodbankForm.hidden_tag() }}
+									{% for message in FoodbankForm.username.errors %}
+									  <div class="flash">{{ message }}</div>
+									{% endfor %}
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    <label for="inputUsername">Username</label>
+                    <input type="username" class="form-control" id="FoodbankUsernameLogin" name="username" placeholder="Username">
                   </div>
+									{% for message in FoodbankForm.password.errors %}
+									  <div class="flash">{{ message }}</div>
+									{% endfor %}
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" id="FoodbankPasswordLogin" name="password" placeholder="Password">
                   </div>
+									<input type='hidden' name='userType' value='foodbank' />
                   <button type="submit" class="btn btn-default green-button modal-button">Log In</button>
                 </form>
               </div>
@@ -155,6 +178,7 @@
         </div>
       </div>
     </div>
+
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

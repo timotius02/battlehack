@@ -1,7 +1,7 @@
 import braintree
 from flask import render_template, flash, redirect, request, Flask, session, url_for
 from backend import app, db
-from forms import SignupForm, SigninForm
+from forms import *
 from models import *
 
 
@@ -15,16 +15,21 @@ braintree.Configuration.configure(
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    form = SignupForm()
+    GroceryForm = GrocerySignupForm()
+    FoodbankForm = FoodbankSignupForm()
+    return render_template('index.html', GroceryForm=GroceryForm, FoodbankForm=FoodbankForm);
+
+
+@app.route('/GrocerySignup', methods=['GET', 'POST'])
+def GrocerySignup():
+    FoodbankForm = FoodbankSignupForm()
+    GroceryForm = GrocerySignupForm()
+   
     if request.method == 'POST':
-        if form.validate(form.userType) == False:
-            return render_template('index.html', form=form, signup_error="bad")
-        else:
-            newuser = ""
-            if form.userType == "grocery":
-                newuser = GroceryUser(form.username.data, form.password.data)
-            else:
-                newuser = FoodbankUser(form.username.data, form.password.data)
+        if GroceryForm.validate() == False:
+            return render_template('index.html', GroceryForm=GroceryForm, FoodbankForm=FoodbankForm, signup_error="bad")
+        else:   
+            newuser = GroceryUser(GroceryForm.username.data, GroceryForm.password.data)
             db.session.add(newuser)
             db.session.commit()
 
@@ -33,26 +38,66 @@ def index():
             return redirect(url_for('store'))
    
     elif request.method == 'GET':
-        return render_template('index.html', form=form)
+        return render_template('index.html', GroceryForm=GroceryForm, FoodbankForm=FoodbankForm)
 
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    form = SignupForm()
+
+@app.route('/FoodbankSignup', methods=['GET', 'POST'])
+def FoodbankSignup():
+    FoodbankForm = FoodbankSignupForm()
+    GroceryForm = GrocerySignupForm()
    
     if request.method == 'POST':
-        if form.validate() == False:
-            return render_template('signup.html', form=form)
+        if FoodbankForm.validate() == False:
+            return render_template('index.html', GroceryForm=GroceryForm, FoodbankForm=FoodbankForm, signup_error="bad")
         else:   
-            newuser = User(form.username.data, form.password.data)
+            newuser = FoodbankUser(FoodbankForm.username.data, FoodbankForm.password.data)
             db.session.add(newuser)
             db.session.commit()
 
             session['username'] = newuser.username
 
-            return redirect(url_for('profile'))
+            return redirect(url_for('kitchen'))
    
     elif request.method == 'GET':
-        return render_template('signup.html', form=form)
+        return render_template('index.html', GroceryForm=GroceryForm, FoodbankForm=FoodbankForm)
+
+
+@app.route('/GroceryLogin', methods=['GET', 'POST'])
+def GroceryLogin():
+    FoodbankForm = FoodbankSigninForm()
+    GroceryForm = GrocerySigninForm()
+   
+    if request.method == 'POST':
+        if GroceryForm.validate() == False:
+            return render_template('index.html', GroceryForm=GroceryForm, FoodbankForm=FoodbankForm, signup_error="bad")
+        else:   
+            session['username'] = GroceryForm.username.data
+
+            return redirect(url_for('store'))
+   
+    elif request.method == 'GET':
+        return render_template('index.html', GroceryForm=GroceryForm, FoodbankForm=FoodbankForm)
+
+
+
+@app.route('/FoodbankLogin', methods=['GET', 'POST'])
+def FoodbankLogin():
+    FoodbankForm = FoodbankSigninForm()
+    GroceryForm = GrocerySigninForm()
+   
+    if request.method == 'POST':
+        if FoodbankForm.validate() == False:
+            return render_template('index.html', GroceryForm=GroceryForm, FoodbankForm=FoodbankForm, signup_error="bad")
+        else:   
+            session['username'] = FoodbankForm.username.data
+
+            return redirect(url_for('kitchen'))
+   
+    elif request.method == 'GET':
+        return render_template('index.html', GroceryForm=GroceryForm, FoodbankForm=FoodbankForm)
+
+
+
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
