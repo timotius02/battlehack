@@ -40,8 +40,8 @@
           <img src="{{ url_for('static',filename='images/grey-house-icon.png') }}" alt="Grey House Icon">
         </div>
         <div class="col-md-6">
-          <h3>Grocery Store Name</h3>
-          <h4>Location</h4>
+          <h3>Amish Market</h3>
+          <h4>240 E. 45th Street, New York, NY 10017</h4>
 
           <div class="col-md-4">
             <select class="form-control store-filter">
@@ -75,13 +75,13 @@
 							<th>#{{ good.id }}</th>
 							<td>{{ good.name }}</td>
 							<td>{{ good.quantity }}</td>
-							<td class="expiration-date" >{{ good.expiration }}</td>
+							<td class="expiration-date" >{{ good.expiration.strftime('%m/%d/%Y') }}</td>
 							<td value="{{ good.id }}" name="tableoption"><input type="radio" value="{{ good.id }}" name="tableoption"></td>
 						</tr>
 						{% endfor %}
           </tbody>
         </table>
-        <div class="row">
+        <div class="row form-inline">
           <div class="col-md-6 col-md-offset-6">
             <div class="form-group" name="price">
               <input type="text" class="form-control" id="sellingPrice" placeholder="Selling Price">

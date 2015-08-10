@@ -1,12 +1,14 @@
 
 {% extends "base.html" %}
 {% block content %}
+<div style="display: block;margin: 100px auto;max-width: 500px;"class="braintree-container">
+	<form id="checkout" method="post" action="/checkout">
+	  <div id="payment-form"></div>
+		<input style="display:none" name="amount" value="{{amount}}" >
+	  <input style="border: none;display: block;margin: 20px auto;background-color: #61d336;padding: 5px 40px;font-weight: 500;font-size: 20px;color: #fff;border-radius: 3px;"type="submit" value="Pay {{amount}}">
+	</form>	
+</div>
 
-<form id="checkout" method="post" action="/checkout">
-  <div id="payment-form"></div>
-	<input style="display:none" name="amount" value="{{amount}}" >
-  <input type="submit" value="Pay {{amount}}">
-</form>
 
 <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 <script>
